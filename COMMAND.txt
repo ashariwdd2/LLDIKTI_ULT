@@ -1,0 +1,33 @@
+# Build Docker
+docker compose build
+
+# Up Docker / run docker 
+docker compose up
+--------------------------------------------------------------------------------------------------------------
+
+# Create Database Mysql
+docker-compose exec mysql bash
+mysql
+CREATE DATABASE laravel;
+
+#Create Database postgres
+docker-compose exec psql bash
+psql -Upostgres
+CREATE DATABASE laravel;
+
+# Migration mysql
+docker-compose exec laravel php artisan migrate --database="mysql" --path="database/migrations/mysql"
+
+# Migration postgres
+docker-compose exec laravel php artisan migrate --database="pgsql" --path="database/migrations/psql"
+
+# Seeder 
+docker-compose exec laravel php artisan db:seed
+
+---------------------------------------------------------------------------------------------------------------
+
+# down volume
+sudo docker-compose down --volumes
+
+# remove volume
+sudo docker-compose down --rmi all --volumes
